@@ -1,0 +1,26 @@
+<br><br><br>
+<div class="container-fluid">
+
+	<div class="row-fluid text-center">\
+			<div class="col-md-10 col-md-offset-1">
+				<legend class="text-success text-left"><strong>Comentarios</strong></legend>
+				<form action="#" method="POST" class="form-horizontal" role="form">
+					<textarea class="form-control" name="comentario" rows="3" maxlength="200" placeholder="Agrega un comentario"></textarea>
+					<br>
+					<input type="hidden" name="_csrf" value="<%= _csrf %>"/>
+					<button type="submit" class="btn btn-primary pull-right" id="btn">
+		                 <strong>Comentar</strong>
+		            </button>
+				</form><br>
+			</div>
+	</div>
+
+	<div class="row-fluid text-center">
+		<div class="col-md-10 col-md-offset-1">
+			<br>
+			<table class="table table-condensed table-bordered">
+
+			</table>		
+		</div>
+	</div>
+</div>

@@ -1,0 +1,50 @@
+<br><br><br>
+<div class="container-fluid">
+	<div class="row-fluid text-center">
+		<div class="col-md-12">
+		<% if (capacitaciones){ %>
+			<h1 class="text-primary"><%= capacitaciones.title %> </h1>
+			<video width="700" height="500" class="img-rounded" controls preload autoplay>
+				<source src="<%= capacitaciones.urlmp4 %>" type="video/mp4">
+				<source src="<%= capacitaciones.urlogv %>" type="video/ogv">
+				Your browser does not support the video tag.
+			</video>
+		<% } %>
+		</div>
+	</div>
+	<div class="row-fluid text-center">
+		<div class="col-md-10 col-md-offset-1">
+			<legend class="text-success text-left"><strong>(<%= capacitaciones.comentarios.length %>) Comentarios</strong></legend>
+			<form action="/Capacitaciones/comment/<%= capacitaciones.id %>" method="POST" class="form-horizontal" role="form">
+				<textarea class="form-control" name="comentario" rows="3" maxlength="200" placeholder="Agrega un comentario"></textarea>
+				<br>
+				<input type="hidden" name="_csrf" value="<%= _csrf %>"/>
+				<button type="submit" class="btn btn-primary pull-right" id="btn">
+	                 <strong>Comentar</strong>
+	            </button>
+			</form><br>
+		</div>
+	</div>
+
+	<div class="row-fluid text-center">
+		<div class="col-md-10 col-md-offset-1">
+		<br>
+			<table class="table table-condensed table-bordered">
+			
+				<% _.each(capacitaciones.comentarios, function(comentarios){ %>
+					<tr class="success">
+						<td><h4 class="text-primary text-left"><strong><%= comentarios.usuario %></strong></h4></td>
+					</tr>
+					<tr>
+						<td>
+								<p class="text-left"><%= comentarios.comentario %></p> 
+								<small><p class="text-right"><%= comentarios.fecha.getDate()+'/'+(comentarios.fecha.getMonth()+1)+'/'+comentarios.fecha.getFullYear()+'  '+comentarios.fecha.getHours()+':'+comentarios.fecha.getMinutes() %></small>
+						</td>
+
+					</tr>
+				<% }) %>
+
+			</table>		
+		</div>
+	</div>
+</div>

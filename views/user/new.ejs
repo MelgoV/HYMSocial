@@ -1,0 +1,45 @@
+
+<div class="container-fluid">
+	<div class="row-fluid">
+	<br><br><br><br>
+		<div class="col-md-6 col-md-offset-3 text-left">	
+			<h1 class="text-center text-primary"><strong> Reg&iacute;strate </strong></h1>
+			<legend class="text-success"><strong>Datos personales</strong></legend>
+			<form action="/user/create" method="POST" class="form-horizontal" role="form">	
+				<div class="form-group">
+					<label for="Nickname_1" class="col-lg-2 control-label">Nickname</label>
+					<div class="col-lg-10">
+						<input type="text" class="form-control" id="text_1" placeholder="Nickname" name="nickname" required>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="Password_1" class="col-lg-2 control-label">Password</label>
+					<div class="col-lg-10">
+						<input type="Password" class="form-control" id="text_1" placeholder="Contraseña" minlength="6" name="password" required>
+					</div>
+				</div>
+				<!-- <legend>Datos Personales</legend> -->
+				<div class="form-group">
+					<label for="Nombre_1" class="col-lg-2 control-label">Nombre</label>
+					<div class="col-lg-10">
+						<input type="text" class="form-control" id="text_2" placeholder="Nombre" name="nombre" required>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="Email_1" class="col-lg-2 control-label">Email</label>
+					<div class="col-lg-10">
+						<input type="email" class="form-control" id="email_1" placeholder="E-Mail" name="e_mail" required>
+					</div>
+				</div>
+				<div class="row-fluid">
+					<div class="col-md-12">
+						<button type="submit" class="btn center-block btn-primary btn-lg" id="btn">
+							&Uacute;nete ahora							 
+						</button>
+						<input type="hidden" name="_csrf" value="<%= _csrf %>"/>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,2 @@
+# MyMusic
+### a Sails application

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!--
+        For demonstration purposes, the `title` is dynamically set here based on
+        your `sails.config.appName` to show that you can inject data into layouts
+        exactly the same way as with your other view templates.
+    -->
+    <title><%- title %></title>
+
+    <!-- Viewport mobile tag for sensible mobile support -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+    <!--
+
+      Stylesheets
+      ========================
+
+      You can link any CSS, LESS, or image files in your `assets` directory
+      as you would normally: using <link/> tags.
+      
+    -->
+    <link rel="stylesheet" type="text/css" href="/styles/bootstrap/css/bootstrap.css">
+    <!--<link rel="stylesheet" type="text/css" href="/images/font-awesome/css/font-awesome.min.css">-->
+    <!--
+
+      Support for LESS included by default
+      ================================================
+
+      LESS files are automatically compiled when they change using the Gruntfile
+      located in the top-level of this Sails app.  If you run into issues with styles
+      not reloading, check the Sails log output in your console for LESS compilation errors.
+      If necessary, shut down and then lift your app again.
+      
+    -->
+
+  </head>
+
+  <body>
+
+<nav class="navbar navbar-custom navbar-fixed-top">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+          <span class="sr-only">Cambiar Navegacion</span>
+          <span class="icon-bar">Social</span>
+          <span class="icon-bar">Noticias</span>
+          <span class="icon-bar">Capacitaciones</span>
+        </button>
+
+
+        <a href="#" class="brand"><img src="\images\logo.png" height="50" width="170"></a>
+
+      </div>
+      <div class="collapse navbar-collapse navbar-ex1-collapse">
+      <% if (typeof user !== 'undefined') { %>
+        <ul class="nav navbar-nav">
+          <li><a href="#"><strong>Social</strong></a></li>
+          <li><a href="#"><strong>Noticias</strong></a></li>
+          <li><a href="#"><strong>Capacitaciones</strong></a></li>
+        </ul>
+        <% } %>
+        <% if (typeof user == 'undefined') { %>
+          <form action="/user/login" method="POST" class="navbar-form navbar-left pull-right">
+            <input type="text" class="form-control input-sm" placeholder="Usuario" name="nickname">
+            <input type="password" class="form-control input-sm" placeholder="Contraseña" name="password">
+              <button type="submit" class="btn btn-primary btn-sm" id="btn">
+                 <strong>Iniciar sesi&oacute;n </strong>
+              </button>
+            <% if (typeof login_message!== 'undefined') { %>
+            <p style="color:red"><%= login_message %></p>
+            <% } %>
+          </form>
+        <% } else { %>
+          <form action="/user/endsession" method="POST" class="navbar-form navbar-left pull-right">
+            <ul class="nav navbar-nav">
+              <li><label class="nav navbar-nav text-info" style="margin-top:4px"><strong><%= user.nickname %></strong></label></li>
+            </ul>
+            <button type="submit" class="btn btn-primary btn-sm" style="margin-left:10px" id="btn">Cerrar sesi&oacute;n</button>
+          </form>
+        <% } %>
+      </div>
+
+    </nav>
+
+
+    <!-- Include the view file for the current controller/route -->
+    <%- body %>
+    <div class="container-fluid">
+      <hr>
+      <footer class="footer">
+      <div class="pull-right">
+      <a href="http://www.hogarymoda.com.co/cms/"><strong>Hogar y Moda S.A</strong><small> Cr&eacute;dito f&aacute;cil.</small></a>
+      <p class="text-muted"><small>Created by: Daniel Melguizo Vel&aacute;squez.</small></p>
+      <div></div>      
+      </div>  
+      </footer>
+    </div>
+
+
+    <!--
+
+      Client-side Javascript
+      ========================
+
+      You can import any js files in your `assets` directory as you would 
+      normally: using <script></script> tags.
+
+      Here's an example of importing a few dependencies, in order:
+    -->
+    <!-- Bring in the socket.io client -->
+    <script type="text/javascript" src="/js/socket.io.js"></script>
+    <!-- then beef it up with some convenience logic for talking to Sails.js -->
+    <script type="text/javascript" src="/js/sails.io.js"></script>
+    <!-- listen on socket.io for incoming messages -->
+    <script type="text/javascript" src="/js/app.js"></script>
+
+    <!-- Your scripts here? -->
+    <!-- Your scripts here? -->
+    <!-- Your scripts here? -->
+
+
+    <!--
+
+      Looking for client-side CoffeeScript or TypeScript?
+      ================================================
+
+      CoffeeScript and TypeScript precompilation are not installed by default,
+      but if you'd like to mix those features in, it is straightforward to
+      `npm install` the relevant grunt community modules and modify your Gruntfile
+      to use them.
+
+    -->
+
+
+
+    <!--
+
+      Another way: The Asset Linker
+      ========================
+
+      Sails supports a Grunt-based asset linker, to automatically inject 
+      <link> and <script> tags, as well any client-side templates you're using
+      into your HTML layouts and views, respecting dependencies.
+
+      You created this Sails app with the asset linker disabled.
+      If you change your mind, check out the docs on the subject:
+      http://sailsjs.org/#!documentation/asset-management
+
+    -->
+
+    </body>
+</html>
